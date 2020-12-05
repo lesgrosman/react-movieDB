@@ -1,0 +1,22 @@
+.Header {
+    display: flex;
+    /* justify-content: center; */
+    /* font-family: sans-serif; */
+    /* text-align: center; */
+    height: 100px;
+    background: rgb(0,36,14);
+    background: linear-gradient(90deg, rgba(0,36,14,1) 13%, rgba(9,90,121,1) 100%); 
+    padding: 25px; 
+    color: #fff;  
+    
+}
+
+.Header h2 {
+    color: #fff;
+    margin-right: 100px;
+}
+
+.Header h3 {
+    justify-content: center;
+    margin-right: 20px;
+}

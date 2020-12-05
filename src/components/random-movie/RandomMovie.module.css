@@ -1,0 +1,51 @@
+.Layout {
+    display:flex;
+    flex-direction: column;
+}
+
+.RandomMovie {
+    width: 500px;
+    height: 250px;
+    display: flex;
+    border: solid 2px #fff;
+    border-radius: 10px;
+    margin:  0 auto;
+    margin-top: 20px;
+    color: #fff;
+    /* background: rgb(196,184,190);
+    background: linear-gradient(90deg, rgba(196,184,190,1) 0%, rgba(200,189,188,1) 100%);
+    background: #fff; */
+}
+
+.RandomMovieContent h3 {
+    text-align: center;
+}
+
+.RandomMovieContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.RandomMovie img {
+    margin: 10px;
+    width: 170px;
+    border: solid 1px black;
+    border-radius: 20px;
+}
+
+.Layout button {
+    height: 50px;
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    background: #fff;
+    border: solid #fff;
+    border-radius: 3px;
+
+}
+
+
+
+
+
+

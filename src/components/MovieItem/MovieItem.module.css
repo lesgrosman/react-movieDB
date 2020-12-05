@@ -1,0 +1,26 @@
+.MovieItem {
+    width: 400px;
+    height: 150px;
+    display: flex;
+    border: solid 2px #fff;
+    border-radius: 10px;
+    margin:  0 auto;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.MovieItemContent h3 {
+    text-align: center;
+}
+
+.MovieItemContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.MovieItem img {
+    margin: 10px;
+    width: 100px;
+    border: solid 1px black;
+    border-radius: 20px;
+}
