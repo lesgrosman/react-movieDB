@@ -17,6 +17,10 @@
     background: #fff; */
 }
 
+.RandomMovie ul{
+    list-style: none;
+}
+
 .RandomMovieContent h3 {
     text-align: center;
 }
