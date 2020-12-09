@@ -30,6 +30,11 @@ export default class GotService {
         return this._transformMovie({...info, crew})
     }
 
+    getPageByGenre = async (genre, page) => {
+        const res = await this.getResource(`/discover/movie?api_key=${this._apiKey}&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}`)
+        return res.results
+    }
+
     getGenres(genres) {
         return genres.map(item => {
             return item.name
@@ -47,6 +52,9 @@ export default class GotService {
 
         return directors.map(director => director.name)
     }
+
+    //////////////////////////////////////////////////////////////////////
+
 
     _transformMovie = (movie) => {
         return {

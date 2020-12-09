@@ -30,7 +30,6 @@ class RandomMovie extends Component {
         this.gotServices.getMovieById(id)
         .then(movie => {
             this.setMovie(movie)
-            console.log( movie)
         })
         .catch(e => console.log(e))
     } 
@@ -51,7 +50,7 @@ class RandomMovie extends Component {
                 <div className={classes.RandomMovie}>
                     {content}
                 </div>
-                <button onClick={this.getRandomPage}>Randomize movie</button>
+                <button onClick={this.getRandomPage}>Choose random movie!</button>
             </div>
         )
     }

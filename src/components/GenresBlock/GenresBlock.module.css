@@ -1,0 +1,91 @@
+.MovieByGenreBlock {
+    color: #fff;
+    margin-top: 20px;
+}
+
+.GenresList {
+  height: 150px;
+  background: rgb(0,36,14);
+  background: linear-gradient(90deg, rgba(0,36,14,1) 13%, rgba(9,90,121,1) 100%); 
+}
+
+.activeGenre {
+  font-size: 100px;
+}
+
+.GenresList h2{
+  text-align: center;
+}
+
+.Genres {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.GenresButton{
+  display: flex;
+  flex-wrap: wrap;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 31px;
+  margin: 10px;
+  outline:none;
+}
+
+.GenresButtonActive{
+  display: flex;
+  flex-wrap: wrap;
+  background: none;
+  color: red;
+  margin: 10px;
+  border: none;
+  outline:none;
+}
+
+.Genres button:hover{
+  font-size:35px;
+  transition: 0.5s;
+  outline:none;
+
+}
+
+.Genres button:not(:hover){
+  font-size:31px;
+  transition: 0.5s;
+  outline:none;
+}
+
+.Content {
+  display: flex;
+}
+
+.List {
+  margin-left: 4px;
+  display:flex;
+  flex-wrap: wrap;
+  height: 600px;
+  width: 80%;
+}
+
+
+.Content button {
+  color: #fff; 
+  background-color: #264921;
+  height: 1200px;
+  width: 15.5%;
+  border: none;
+  font-size: 30px;
+  /* opacity: 0.2; */
+}
+
+.Content button:hover {
+  opacity: 0.8;
+  transition: 1s;
+}
+
+.Content button:not(:hover) {
+  opacity: 0.6;
+  transition: 1s;
+}
+

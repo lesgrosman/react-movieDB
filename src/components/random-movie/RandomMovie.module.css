@@ -38,13 +38,13 @@
 }
 
 .Layout button {
-    height: 50px;
-    width: 150px;
+    background: #000;
+    font-size: 25px;
     margin: auto;
     margin-top: 20px;
-    background: #fff;
     border: solid #fff;
-    border-radius: 3px;
+    border-radius: 15px;
+    color: #fff;
 
 }
 

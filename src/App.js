@@ -1,7 +1,9 @@
 import Header from './components/header/header'
 import RandomMovie from './components/random-movie/RandomMovie'
-import FilterBlock from './components/FilterBlock/FilterBlock'
-import MovieList from './components/MovieList/MovieList'
+import GenresBlock from './components/GenresBlock/GenresBlock'
+import SearchBlock from './components/SearchBlock/SearchBlock'
+import MostRatedBlock from './components/MostRatedBlock/MostRatedBlock'
+
 import './App.css'
 
 function App() {
@@ -9,8 +11,7 @@ function App() {
     <div className="App.css">
       <Header/>
         <RandomMovie/>
-        <FilterBlock/>
-        <MovieList/>
+        <GenresBlock/>
     </div>
   );
 }
