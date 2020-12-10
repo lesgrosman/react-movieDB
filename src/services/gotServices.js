@@ -35,6 +35,14 @@ export default class GotService {
         return res.results
     }
 
+    getMovieByName = async (name, page) => {
+        const res = await this.getResource(`/search/movie?api_key=${this._apiKey}&language=en-US&query=${name}&page=${page}&include_adult=true`)
+        return res.results
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////
+
     getGenres(genres) {
         return genres.map(item => {
             return item.name

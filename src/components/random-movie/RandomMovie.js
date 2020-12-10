@@ -35,6 +35,7 @@ class RandomMovie extends Component {
     } 
 
     getRandomPage = () => {
+
         this.gotServices.getRandomPage()
             .then(id => {
                 this.updateRandomMovie(id)
@@ -64,20 +65,10 @@ const View = ({movie}) => {
             <div className={classes.RandomMovieContent}>
                 <h3>{title}</h3>
                 <span>{tagline}</span>
-                <ul>
-                    <li>
-                        <strong>Director</strong>: { director.join(', ')}
-                    </li>
-                    <li>
-                        <strong>Cast</strong>: { cast.join(', ')}...
-                    </li>
-                    <li>
-                        <strong>Genre</strong>: { genres ? genres.join(', ') : null}
-                    </li>
-                    <li>
-                        <strong>Year</strong>: {year}
-                    </li>
-                </ul>
+                <span><strong>Director</strong>: { director.join(', ')}</span>
+                <span><strong>Cast</strong>: {cast.join(', ')}...</span>
+                <span><strong>Genre</strong>: { genres ? genres.join(', ') : null}</span>
+                <span><strong>Year</strong>: {year}</span>
             </div>
         </>
     )   

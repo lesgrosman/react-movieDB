@@ -3,13 +3,13 @@ import classes from './MovieItem.module.css'
 
 
 function MovieItem(props) {
-    const {title, vote, date, poster} = props
+    const {title, poster} = props
     const poster_path = `https://image.tmdb.org/t/p/w185/${poster}`
 
     return(
         <div className={classes.MovieItem}>
             <img  src={poster_path} alt="imag"/>
-            <h4>{title}</h4>
+            <p>{title}</p>
         </div>
     )
 }

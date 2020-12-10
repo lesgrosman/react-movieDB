@@ -1,11 +1,14 @@
 .MovieItem {
     width: 210px;
-    height: 300px;
+    height: 370px;
     /* display: flex; */
-    /* border: solid 2px #fff; */
+    border: solid 2px #264921;
     /* border-radius: 10px; */
     /* margin:  0 auto; */
     /* margin-top: 20px; */
+    font-size: 18px;
+    padding: auto;
+    text-align: center;
     color: #fff;
 }
 

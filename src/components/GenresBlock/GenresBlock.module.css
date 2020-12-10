@@ -58,13 +58,16 @@
 
 .Content {
   display: flex;
+  justify-content: space-between;
 }
 
 .List {
-  margin-left: 4px;
+  margin: 0 auto;
+  position: block;
+  /* margin-left: 4px; */
   display:flex;
   flex-wrap: wrap;
-  height: 600px;
+  /* height: 600px; */
   width: 80%;
 }
 
@@ -72,8 +75,8 @@
 .Content button {
   color: #fff; 
   background-color: #264921;
-  height: 1200px;
-  width: 15.5%;
+  height: 1480px;
+  width: 15.8%;
   border: none;
   font-size: 30px;
   /* opacity: 0.2; */

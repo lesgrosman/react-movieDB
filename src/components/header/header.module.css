@@ -1,6 +1,6 @@
 .Header {
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     /* font-family: sans-serif; */
     /* text-align: center; */
     height: 100px;
@@ -9,6 +9,12 @@
     padding: 25px; 
     color: #fff;  
     
+}
+
+.Header a {
+    color: #fff !important;
+    text-decoration: none;
+    margin: 20px;
 }
 
 .Header h2 {

@@ -9,6 +9,7 @@ class WrapperBlock extends Component{
         return (
             <div className={classes.WrapperBlock}>
                 <GenresBlock/>
+                <h1>YO</h1>
                 <SearchBlock/>
                 <MostRatedBlock/>
             </div>
