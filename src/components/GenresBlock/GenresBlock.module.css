@@ -31,6 +31,7 @@
   font-size: 31px;
   margin: 10px;
   outline:none;
+  cursor: pointer;
 }
 
 .GenresButtonActive{
@@ -76,10 +77,11 @@
   color: #fff; 
   background-color: #264921;
   height: 1480px;
-  width: 15.8%;
+  width: 14.8%;
   border: none;
   font-size: 30px;
   /* opacity: 0.2; */
+  cursor: pointer;
 }
 
 .Content button:hover {

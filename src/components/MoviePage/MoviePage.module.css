@@ -1,0 +1,30 @@
+.MoviePage {
+    display: flex;
+    color: #fff;
+    height: 380px;
+    width: 900px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.MoviePage h3 {
+    text-align: center;
+}
+
+.MoviePage img {
+    margin: 10px;
+    width: 200px;
+    border: solid 1px black;
+    border-radius: 20px;
+}
+
+.Button {
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    outline: none;
+    font-size: 20px;
+    background: #000;
+    cursor: pointer;
+}

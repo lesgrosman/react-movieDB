@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import MovieList from '../MovieList/MovieList'
 import GotService from '../../services/gotServices'
 import Loader from '../UI/Loader/Loader'
+import {withRouter} from 'react-router-dom'
 import classes from './GenresBlock.module.css'
 
 class GenresBlock extends Component{
@@ -118,11 +119,15 @@ class GenresBlock extends Component{
         })
     }
 
-    render() {    
+    render() {  
         const disablePrev = this.state.page === 1 ? true : false  
         const disableNext = this.state.page === 500 ? true : false 
 
-        const content = !this.state.loading ? <MovieList movieList={this.state.movieList}/> : <Loader/>
+        const content = !this.state.loading 
+        ? <MovieList 
+            movieList={this.state.movieList}
+            />
+        : <Loader/>
 
         return (
             <div className={classes.MovieByGenreBlock}>
@@ -144,4 +149,4 @@ class GenresBlock extends Component{
     }
 }
 
-export default GenresBlock
+export default withRouter(GenresBlock)
