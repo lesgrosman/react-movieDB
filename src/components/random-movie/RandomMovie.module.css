@@ -8,14 +8,12 @@
     width: 500px;
     height: 250px;
     display: flex;
-    border: solid 2px #fff;
+    border: solid 3px #ffa41b;
     border-radius: 10px;
     margin:  0 auto;
     margin-top: 20px;
     color: #fff;
-    /* background: rgb(196,184,190);
-    background: linear-gradient(90deg, rgba(196,184,190,1) 0%, rgba(200,189,188,1) 100%);
-    background: #fff; */
+    background: #33313b;
 }
 
 .RandomMovieContent h3 {
@@ -35,11 +33,11 @@
 }
 
 .Layout button {
-    background: #000;
+    background: #33313b;
     font-size: 25px;
     margin: auto;
     margin-top: 20px;
-    border: solid #fff;
+    border: solid #ffa41b;
     border-radius: 15px;
     color: #fff;
     outline: none;

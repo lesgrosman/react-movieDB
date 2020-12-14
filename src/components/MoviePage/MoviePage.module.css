@@ -3,9 +3,10 @@
     color: #fff;
     height: 380px;
     width: 900px;
-    border: 2px solid #fff;
+    border: 3px solid #ffa41b;
     border-radius: 8px;
     margin: 0 auto;
+    background: #33313b;
 }
 
 .MoviePage h3 {

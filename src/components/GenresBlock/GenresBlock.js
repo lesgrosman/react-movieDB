@@ -138,11 +138,15 @@ class GenresBlock extends Component{
                     </div>
                 </div>
                 <div className={classes.Content}>
-                    <button disabled={disablePrev} onClick={this.decreasePage}>Previous</button>
+                    {/* <button disabled={disablePrev} onClick={this.decreasePage}>Previous</button> */}
+                    <i disabled={disablePrev} onClick={this.decreasePage} className="far fa-arrow-alt-circle-left fa-6x"></i>
                     <div className={classes.List}>
                         {content}
                     </div>
-                    <button disabled={disableNext} onClick={this.increasePage}>Next</button>
+                    <i disabled={disableNext} onClick={this.increasePage} className="far fa-arrow-alt-circle-right fa-6x"></i>
+                    {/* <button disabled={disableNext} onClick={this.increasePage}>Next</button> */}
+                    {/* <i class="far fa-arrow-alt-circle-right"></i>
+                    <i class="far fa-arrow-alt-circle-left"></i> */}
                 </div>
             </div>
         )
