@@ -1,131 +1,49 @@
 import React, {Component} from 'react'
 import MovieList from '../MovieList/MovieList'
-import GotService from '../../services/gotServices'
+import GenreName from '../UI/GenreName/GenreName'
 import Loader from '../UI/Loader/Loader'
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {getPageByGenre, increasePage, decreasePage, setGenreId} from '../../store/actions/genres'
 import classes from './GenresBlock.module.css'
 
 class GenresBlock extends Component{
-    state ={
-        page: 1,
-        genre: 28,
-        movieList: [],
-        loading: true,
-        genres: [
-            {title: "Action", id: 28, active: false},
-            {title: "Drama", id: 18, active: false},
-            {title: "Comedy", id: 35, active: false},
-            {title: "Thriller", id: 53, active: false},
-            {title: "Adventure", id: 12, active: false},
-            {title: "Crime", id: 80, active: false},
-            {title: "Family", id: 10751, active: false},
-            {title: "Horror", id: 27, active: false},
-            {title: "Fantasy", id: 14, active: false},
-            {title: "Animation", id: 16, active: false}
-        ]
-    }
-
-    gotServices = new GotService()
 
     componentDidMount() {
-        const {genre, page} = this.state
-        this.getPageByGenre(genre, page)
+        const {genre, page} = this.props
+        this.props.getPageByGenre(genre, page)
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.genre !== this.state.genre || prevState.page !== this.state.page) {
-            const {genre, page} = this.state
-            this.getPageByGenre(genre, page)
-        }
-    }
-
-    increasePage = () => {
-        if (this.state.page < 500) {
-            this.setState({
-                page: this.state.page + 1
-            })
-        }        
-    }
-
-    decreasePage = () => {
-        if (this.state.page > 1) {
-            this.setState({
-                page: this.state.page - 1
-            })
+        const {genre, page} = this.props
+        if (prevProps.genre !== genre || prevProps.page !== page) {
+            
+            this.props.getPageByGenre(genre, page)
         }
     }
 
     onClickHandler = (genreId) => {
-        let index = 0
-        this.state.genres.forEach((genre, i) => {
-            if (genre.id === genreId) {
-                index = i
-            }
-        })
-
-        let genres = this.state.genres.map(genre => {
-            return {title: genre.title, id: genre.id, active: false}
-        })
-
-        const activeGenre = {...genres[index], active: true}
-
-        genres = [...genres.slice(0, index), activeGenre, ...genres.slice(index + 1)]
-
-        this.setState({
-            genre: genreId,
-            page: 1,
-            genres
-        })
-    }
-
-    updateMovieList = (movieList) => {
-        this.setState({
-            movieList,
-            loading: false
-        })
-    }
-
-    getPageByGenre(genre, page=1) {
-        this.setState({
-            loading: true
-        })
-        this.gotServices.getPageByGenre(genre, page)
-            .then(movieList => {
-                this.updateMovieList(movieList)
-            })
-            .catch(e => console.log(e))
+        this.props.setGenreId(genreId)
     }
 
     renderGenres = (genres) => {
         return genres.map(genre => {
             return (
-                <>
-                    { genre.active ? 
-                    <button 
-                        className={classes.GenresButtonActive} 
-                        onClick={() => this.onClickHandler(genre.id)}
-                    >
-                        {genre.title}
-                    </button>
-                    : <button 
-                        className={classes.GenresButton} 
-                        onClick={() => this.onClickHandler(genre.id)}
-                    >
-                        {genre.title}
-                    </button> 
-                    }
-                </>
+                <GenreName 
+                    onClickHandler={(genreId) => this.onClickHandler(genreId)} 
+                    genre={genre}
+                />
             )
         })
     }
 
     render() {  
-        const disablePrev = this.state.page === 1 ? true : false  
-        const disableNext = this.state.page === 500 ? true : false 
+        const disablePrev = this.props.page === 1 ? true : false  
+        const disableNext = this.props.page === 500 ? true : false 
 
-        const content = !this.state.loading 
+        const content = !this.props.loading 
         ? <MovieList 
-            movieList={this.state.movieList}
+            movieList={this.props.movieList}
             />
         : <Loader/>
 
@@ -134,23 +52,38 @@ class GenresBlock extends Component{
                 <div className={classes.GenresList}>
                     <h2>The most popular movies by genre!</h2>
                     <div className={classes.Genres}>
-                        {this.renderGenres(this.state.genres)}
+                        {this.renderGenres(this.props.genres)}
                     </div>
                 </div>
                 <div className={classes.Content}>
-                    {/* <button disabled={disablePrev} onClick={this.decreasePage}>Previous</button> */}
-                    <i disabled={disablePrev} onClick={this.decreasePage} className="far fa-arrow-alt-circle-left fa-6x"></i>
+                    <i disabled={disablePrev} onClick={this.props.decreasePage} className="far fa-arrow-alt-circle-left fa-6x"></i>
                     <div className={classes.List}>
                         {content}
                     </div>
-                    <i disabled={disableNext} onClick={this.increasePage} className="far fa-arrow-alt-circle-right fa-6x"></i>
-                    {/* <button disabled={disableNext} onClick={this.increasePage}>Next</button> */}
-                    {/* <i class="far fa-arrow-alt-circle-right"></i>
-                    <i class="far fa-arrow-alt-circle-left"></i> */}
+                    <i disabled={disableNext} onClick={this.props.increasePage} className="far fa-arrow-alt-circle-right fa-6x"></i>
                 </div>
             </div>
         )
     }
 }
 
-export default withRouter(GenresBlock)
+const mapStateToProps = (state) => {
+    return {
+        genre: state.genres.genre,
+        page: state.genres.page,
+        movieList: state.genres.movieList,
+        loading: state.genres.loading,
+        genres: state.genres.genres
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getPageByGenre: (genre, page) => dispatch(getPageByGenre(genre, page)),
+        increasePage: () => dispatch(increasePage()),
+        decreasePage: () => dispatch(decreasePage()),
+        setGenreId: (genre) => dispatch(setGenreId(genre))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(GenresBlock))

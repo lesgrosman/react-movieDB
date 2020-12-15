@@ -1,56 +1,25 @@
 import React, {Component} from 'react'
 import classes from './RandomMovie.module.css'
-import GotService from '../../services/gotServices'
 import Loader from '../UI/Loader/Loader'
+import {connect} from 'react-redux'
+import {getRandomPage} from '../../store/actions/random'
+ 
 
 class RandomMovie extends Component {
 
-    state = {
-        randomMovie: {},
-        loading: true
-     }
-
-    gotServices = new GotService()
-
     componentDidMount() {
-        this.getRandomPage()
+        this.props.getRandomPage()
     }
-
-    setMovie = (movie) => {
-        this.setState({
-            randomMovie: movie,
-            loading: false
-        })
-    }
-
-    updateRandomMovie = (id) => {
-        this.setState({
-            loading: true
-        })
-        this.gotServices.getMovieById(id)
-        .then(movie => {
-            this.setMovie(movie)
-        })
-        .catch(e => console.log(e))
-    } 
-
-    getRandomPage = () => {
-        this.gotServices.getRandomPage()
-            .then(id => {
-                this.updateRandomMovie(id)
-            })    
-            .catch(e => console.log(e))      
-    }
-
+ 
     render() {
-        const content = this.state.loading ? <Loader/> : <View movie={this.state.randomMovie}/>
+        const content = this.props.loading ? <Loader/> : <View movie={this.props.randomMovie}/>
 
         return (           
             <div className={classes.Layout}>
                 <div className={classes.RandomMovie}>
                     {content}
                 </div>
-                <button onClick={this.getRandomPage}>Choose random movie!</button>
+                <button onClick={this.props.getRandomPage}>Choose random movie!</button>
             </div>
         )
     }
@@ -73,4 +42,17 @@ const View = ({movie}) => {
     )   
 }
 
-export default RandomMovie
+const mapStateToProps = (state) => {
+    return {
+        loading: state.random.loading,
+        randomMovie: state.random.randomMovie
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getRandomPage: () => dispatch(getRandomPage())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RandomMovie)

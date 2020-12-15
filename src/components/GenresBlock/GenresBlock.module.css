@@ -24,28 +24,6 @@
   flex-wrap: wrap;
 }
 
-.GenresButton{
-  display: flex;
-  flex-wrap: wrap;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 31px;
-  margin: 10px;
-  outline:none;
-  cursor: pointer;
-}
-
-.GenresButtonActive{
-  display: flex;
-  flex-wrap: wrap;
-  background: none;
-  color: #ffa41b;
-  margin: 10px;
-  border: none;
-  outline:none;
-}
-
 .Genres button:hover{
   font-size:35px;
   transition: 0.5s;
