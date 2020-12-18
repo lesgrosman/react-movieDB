@@ -2,50 +2,39 @@ import React, {Component} from 'react'
 import GotService from '../../services/gotServices'
 import {withRouter} from 'react-router-dom'
 import Loader from '../UI/Loader/Loader'
+import MovieDescr from '../UI/MovieDescr/MovieDescr'
+import MovieFooter from '../UI/MovieFooter/MovieFooter'
+import { connect } from 'react-redux'
+import { updateMovie } from '../../store/actions/random'
 import classes from './MoviePage.module.css' 
 
 
 class MoviePage extends Component {
 
-    state = {
-        movie: {},
-        loading: false
-    }
-
     gotServices = new GotService()
 
     componentDidMount() {
-        this.getMovie(this.props.movieId)
+        this.props.updateMovie(this.props.movieId)
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.movieId !== this.props.movieId) {
-            this.getMovie(this.props.movieId)
-        }
-    }
-
-    showMovie = (movie) => {
-        this.setState({
-            movie: movie,
-            loading: false
-        })
-    }
-
-    getMovie(id) {
-        this.setState({
-            loading: true
-        })
-
-        this.gotServices.getMovieById(id)
-            .then(movie => this.showMovie(movie))
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.movieId !== this.props.movieId) {
+    //         this.getMovie(this.props.movieId)
+    //     }
+    // }
 
     render() {
-        const content = this.state.loading ? <Loader/> : <View movie={this.state.movie}/>
+
+        const content = this.props.loading ? <Loader/> : <View/>
 
         return (           
             <>
-                <buttton className={classes.Button} onClick={() => this.props.history.goBack()}>Go Back</buttton>
+                <buttton 
+                    className={classes.Button} 
+                    onClick={() => this.props.history.goBack()}
+                >
+                    Go Back
+                </buttton>
                 <div className={classes.MoviePage}>
                     {content}
                 </div>
@@ -54,27 +43,28 @@ class MoviePage extends Component {
     }
 }
 
-export default withRouter(MoviePage)
-
-const View = ({movie}) => {
-    const {poster, title, genres, year, cast, director, overview} = movie
-
+const View = () => {
     return (
-        <>
-            <img src={poster} alt="imag"/>
-            <div className={classes.RandomMovieContent}>
-                <h3>{title}</h3>
-                <span>{overview}</span>
-                <br/>
-                <br/>
-                <span><strong>Director</strong>: { director ? director.join(', '): null}</span>
-                <br/>
-                <span><strong>Cast</strong>: { cast ? cast.join(', '): null}...</span>
-                <br/>
-                <span><strong>Genre</strong>: { genres ? genres.join(', '): null}</span>
-                <br/>
-                <span><strong>Year</strong>: {year}</span>
-            </div>
-        </>
+        <div className={classes.View}>
+            <MovieDescr/>
+            <MovieFooter/>
+        </div>
     )   
 }
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.movie.loading
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateMovie: (id) => dispatch(updateMovie(id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MoviePage))
+
+
+

@@ -1,20 +1,20 @@
 const initialState = {
-    randomMovie: {},
+    movie: {},
     loading: true
 }
 
-export default function randomReducer(state=initialState, action) {
+export default function movieReducer(state=initialState, action) {
     switch (action.type) {
-        case 'SET_RANDOM_LOADING':
+        case 'SET_LOADING':
             return {
                 ...state,
                 loading: true
             }
-        case 'SET_RANDOM_MOVIE':
+        case 'SET_MOVIE':
             return {
                 ...state,
                 loading: false,
-                randomMovie: action.movie
+                movie: action.movie
             }
         default:
             return state

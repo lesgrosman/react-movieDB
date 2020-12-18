@@ -5,8 +5,9 @@
 }
 
 .RandomMovie {
+    position: relative;
     width: 500px;
-    height: 250px;
+    min-height: 300px;
     display: flex;
     border: solid 3px #ffa41b;
     border-radius: 10px;
@@ -15,6 +16,24 @@
     color: #fff;
     background: #33313b;
 }
+
+.View { 
+    display:flex;
+    -webkit-animation-duration: 1s; 
+    animation-duration: 1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    -webkit-animation-name: fadeIn; 
+    animation-name: fadeIn;
+  } 
+  @-webkit-keyframes fadeIn { 
+      0% {opacity: 0;} 
+      100% {opacity: 1;} 
+  } 
+  @keyframes fadeIn { 
+      0% {opacity: 0;} 
+      100% {opacity: 1;} 
+  }
 
 .RandomMovieContent h3 {
     text-align: center;

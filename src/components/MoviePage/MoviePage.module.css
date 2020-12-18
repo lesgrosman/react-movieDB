@@ -1,31 +1,23 @@
 .MoviePage {
-    display: flex;
+    position: relative;
+    padding: 100px;
     color: #fff;
-    height: 380px;
-    width: 900px;
-    border: 3px solid #ffa41b;
-    border-radius: 8px;
-    margin: 0 auto;
-    background: #33313b;
+    width: 100%;
 }
 
-.MoviePage h3 {
-    text-align: center;
-}
-
-.MoviePage img {
-    margin: 10px;
-    width: 200px;
-    border: solid 1px black;
-    border-radius: 20px;
-}
-
-.Button {
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    outline: none;
-    font-size: 20px;
-    background: #000;
-    cursor: pointer;
-}
+.View { 
+    -webkit-animation-duration: 1s; 
+    animation-duration: 1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    -webkit-animation-name: fadeIn; 
+    animation-name: fadeIn;
+  } 
+  @-webkit-keyframes fadeIn { 
+      0% {opacity: 0;} 
+      100% {opacity: 1;} 
+  } 
+  @keyframes fadeIn { 
+      0% {opacity: 0;} 
+      100% {opacity: 1;} 
+  }

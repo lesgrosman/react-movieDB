@@ -15,6 +15,19 @@ export function getRandomPage() {
 
 export function updateRandomMovie(id) {
     return dispatch => {
+        dispatch(setRandomLoading())
+
+        gotServices.getMovieById(id)
+        .then(movie => {
+            dispatch(setRandomMovie(movie))
+        })
+        .catch(e => console.log(e))
+    }
+
+} 
+
+export function updateMovie(id) {
+    return dispatch => {
         dispatch(setLoading())
 
         gotServices.getMovieById(id)
@@ -36,5 +49,18 @@ export function setMovie(movie) {
 export function setLoading() {
     return {
         type: 'SET_LOADING'
+    }
+}
+
+export function setRandomMovie(movie) {
+    return {
+        type: 'SET_RANDOM_MOVIE',
+        movie
+    }
+}
+
+export function setRandomLoading() {
+    return {
+        type: 'SET_RANDOM_LOADING'
     }
 }

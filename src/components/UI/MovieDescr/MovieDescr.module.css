@@ -1,0 +1,18 @@
+.MovieDescr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.MovieDescr img {
+    border-radius: 10px;
+}
+
+.Crew {
+    display: flex;
+    flex-direction: column;
+}
+
+.Cast {
+    display: flex;
+    flex-direction: column;
+}

@@ -39,11 +39,12 @@
 
 .Content {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .List {
-  padding: auto;
+  /* padding: auto; */
+  position: relative;
   margin: auto;
   display:flex;
   flex-wrap: wrap;

@@ -28,17 +28,17 @@ class RandomMovie extends Component {
 const View = ({movie}) => {
     const {poster, title, tagline, genres, year, cast, director} = movie
     return (
-        <>
+        <div className={classes.View}>
             <img src={poster} alt="imag"/>
             <div className={classes.RandomMovieContent}>
                 <h3>{title}</h3>
                 <span>{tagline}</span>
                 <span><strong>Director</strong>: {director.join(', ')}</span>
-                <span><strong>Cast</strong>: {cast.join(', ')}...</span>
+                <span><strong>Cast</strong>: {cast.slice(0, 3).join(', ')}...</span>
                 <span><strong>Genre</strong>: { genres ? genres.join(', ') : null}</span>
                 <span><strong>Year</strong>: {year}</span>
             </div>
-        </>
+        </div>
     )   
 }
 

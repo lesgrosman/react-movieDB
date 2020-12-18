@@ -50,30 +50,41 @@ export default class GotService {
     }
 
     getActors(actorsList) {
-        return actorsList.slice(0, 3).map(actor => {
+        return actorsList.map(actor => {
             return actor.name
         })      
     }
 
-    getDirector(crewList) {
-        const directors = crewList.filter(item => item.job === "Director")
+    getTeam(crewList, job) {
+        const team = crewList.filter(item => item.job === job)
 
-        return directors.map(director => director.name)
+        return team.map(item => item.name)
     }
+
+    getCountries(countryList) {
+        return countryList.map(country => country.name)
+    }
+
+    
 
     //////////////////////////////////////////////////////////////////////
 
 
     _transformMovie = (movie) => {
         return {
+            id: movie.id,
             title: movie.original_title,
-            director: this.getDirector(movie.crew.crew),
+            director: this.getTeam(movie.crew.crew, 'Director'),
+            writer: this.getTeam(movie.crew.crew, 'Screenplay'),
+            producer: this.getTeam(movie.crew.crew, 'Producer'),
+            country: this.getCountries(movie.production_countries),
             cast: this.getActors(movie.crew.cast),
             poster: `https://image.tmdb.org/t/p/w185/${movie.poster_path}`,
             year: movie.release_date.slice(0, 4),
             genres: this.getGenres(movie.genres),
             tagline: movie.tagline,
-            overview: movie.overview
+            overview: movie.overview,
+            vote: movie.vote_average
         }
     }
 }
