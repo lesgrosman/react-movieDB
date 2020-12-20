@@ -39,22 +39,21 @@
   }
   
   
-  .Content button {
-    color: #fff; 
-    background-color: #264921;
-    height: 1480px;
-    width: 15.8%;
-    border: none;
-    font-size: 30px;
+  .Content i {
+    color: #ffa41b; 
     /* opacity: 0.2; */
+    cursor: pointer;
+    padding-top: auto;
+    margin: auto;
   }
   
-  .Content button:hover {
-    opacity: 0.8;
+  
+  .Content i:hover {
+    opacity: 1;
     transition: 1s;
   }
   
-  .Content button:not(:hover) {
-    opacity: 0.6;
+  .Content i:not(:hover) {
+    opacity: 0.4;
     transition: 1s;
   }

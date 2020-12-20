@@ -12,6 +12,10 @@
     flex-direction: column;
 }
 
+.Crew span {
+    padding-bottom: 10px;
+}
+
 .Cast {
     display: flex;
     flex-direction: column;
