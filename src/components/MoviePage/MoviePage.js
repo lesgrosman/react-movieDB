@@ -24,7 +24,6 @@ class MoviePage extends Component {
     // }
 
     render() {
-
         const content = this.props.loading ? <Loader/> : <View/>
 
         return (           

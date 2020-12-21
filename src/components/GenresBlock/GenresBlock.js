@@ -17,7 +17,7 @@ class GenresBlock extends Component{
     componentDidUpdate(prevProps, prevState) {
         const {genre, page} = this.props
         if (prevProps.genre !== genre || prevProps.page !== page) {
-            
+            console.log(page)
             this.props.getPageByGenre(genre, page)
         }
     }

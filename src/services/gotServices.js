@@ -36,7 +36,7 @@ export default class GotService {
     }
 
     getMovieByName = async (name, page) => {
-        const res = await this.getResource(`/search/movie?api_key=${this._apiKey}&language=en-US&query=${name}&page=${page}&include_adult=true`)
+        const res = await this.getResource(`/search/movie?api_key=${this._apiKey}&language=en-US&query=${name}&page=${page}&include_adult=false`)
         return res.results
     }
 
@@ -65,6 +65,13 @@ export default class GotService {
         return countryList.map(country => country.name)
     }
 
+    checkImage(image) {
+        if (image === 'https://image.tmdb.org/t/p/w185/null') {
+            return 'https://lh3.googleusercontent.com/proxy/kyDyjgWVfRlY2WBlQqapSTuPHJ0n1ZhZvGYAM0xKuKBCU68MdHfAjye67u3zp9m_JJF9f4gDyJiIMJ8f3MMVhKR-X4RejX-Wmqtqh16TDUcsB_WC7Rmznz6R8qIKBFRn_jkmUrMoYS8STe7d4xpJzkU-ecC93bxKxqQ'
+        }
+        return image
+    }
+
     
 
     //////////////////////////////////////////////////////////////////////
@@ -79,7 +86,7 @@ export default class GotService {
             producer: this.getTeam(movie.crew.crew, 'Producer'),
             country: this.getCountries(movie.production_countries),
             cast: this.getActors(movie.crew.cast),
-            poster: `https://image.tmdb.org/t/p/w185/${movie.poster_path}`,
+            poster: this.checkImage(`https://image.tmdb.org/t/p/w185/${movie.poster_path}`),
             year: movie.release_date.slice(0, 4),
             genres: this.getGenres(movie.genres),
             tagline: movie.tagline,

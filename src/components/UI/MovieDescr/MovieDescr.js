@@ -16,7 +16,6 @@ const MovieDescr = props => {
             )
         })
     }
-
     return (
         <div className={classes.MovieDescr}>
             <img src={poster} alt="imag"/>

@@ -5,6 +5,18 @@
     width: 100%;
 }
 
+.Button {
+    background: #33313b;
+    font-size: 25px;
+    padding: 4px;
+    margin-left: 100px;
+    border: solid #ffa41b;
+    border-radius: 10px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
 .View { 
     -webkit-animation-duration: 1s; 
     animation-duration: 1s; 

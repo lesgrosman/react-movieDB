@@ -8,16 +8,18 @@ import classes from './SearchBlock.module.css'
 class SearchBlock extends Component{
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.page !== this.props.page) {
-            this.props.getMovieByName(this.props.prevInput, this.props.page)
-            console.log(this.props.prevInput, this.props.page)
+        const {page, prevInput} = this.props
+        if (prevProps.page !== page) {
+            console.log(this.props.page)
+
+            this.props.getMovieByName(prevInput, page)
         }
     }
 
     onSubmitHandler = (event) => {
         event.preventDefault()
 
-        this.props.getMovieByName(this.props.input, 1)
+        this.props.getMovieByName(this.props.input)
 
         this.props.changePrevInput(this.props.input)
     }
@@ -27,10 +29,9 @@ class SearchBlock extends Component{
     }
 
     render() {
+
         const disablePrev = this.props.page === 1 ? true : false  
         const disableNext = this.props.page === 500 ? true : false 
-
-        console.log(this.props.page)
 
         // const content = !this.state.loading ? <MovieList movieList={this.props.movieList}/> : <Loader/>
         const content = <MovieList movieList={this.props.movieList}/>
@@ -66,7 +67,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getMovieByName: (name) => dispatch(getMovieByName(name)),
+        getMovieByName: (name, page) => dispatch(getMovieByName(name, page)),
         increasePage: () => dispatch(increasePage()),
         decreasePage: () => dispatch(decreasePage()),
         changeInput: (value) => dispatch(changeInput(value)),
