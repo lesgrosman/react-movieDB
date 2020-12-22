@@ -6,18 +6,19 @@ const gotServices = new GotService()
 export function getMovieByName(name, page = 1) {
     return dispatch => {
         gotServices.getMovieByName(name, page)
-            .then(movies => {
-                dispatch(updateMovieList(movies))
+            .then(({results, total_pages}) => {
+                dispatch(updateMovieList(results, total_pages))
             })
             .catch(e => console.log(e))
     }
 
 }
 
-function updateMovieList(movieList) {
+function updateMovieList(results, total_pages) {
     return {
         type: 'UPDATE_SEACR_MOVIE_LIST',
-        movieList
+        results,
+        total_pages
     }
 }
 
@@ -32,7 +33,7 @@ export function increasePage() {
     return (dispatch, getState) => {
         const state = getState().search
 
-        if (state.page < 5) {
+        if (state.page < state.total_pages) {
             dispatch({
                 type: 'INCREASE_PAGE_SEARCH'
             })

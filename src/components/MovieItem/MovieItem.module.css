@@ -1,6 +1,6 @@
 .MovieItem {
     width: 210px;
-    height: 370px;
+    /* height: 370px; */
     border: solid 2px #ffa41b;
     background: #33313b;
     border-radius: 10px;
@@ -12,9 +12,8 @@
     cursor: pointer;
 
 }
-
-.MovieItemContent h3 {
-    text-align: center;
+.MovieItem p {
+    margin: auto;
 }
 
 .MovieItem img {

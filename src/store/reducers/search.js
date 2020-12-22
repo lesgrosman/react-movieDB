@@ -2,7 +2,8 @@ const initialState = {
     input: '',
     prevInput: '',
     page: 1,
-    movieList: []
+    movieList: [],
+    total_pages: null
 }
 
 export default function searchReducer(state=initialState, action) {
@@ -10,7 +11,8 @@ export default function searchReducer(state=initialState, action) {
         case 'UPDATE_SEACR_MOVIE_LIST':
             return {
                 ...state,
-                movieList: action.movieList
+                movieList: action.results,
+                total_pages: action.total_pages
             }
         case 'INCREASE_PAGE_SEARCH':
             return {
@@ -30,6 +32,7 @@ export default function searchReducer(state=initialState, action) {
         case 'CHANGE_PREV_INPUT':
             return {
                 ...state,
+                page: 1,
                 prevInput: action.input,
                 input: ''
             }

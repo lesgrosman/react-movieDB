@@ -14,7 +14,8 @@ const initialState = {
         {title: "Horror", id: 27, active: false},
         {title: "Fantasy", id: 14, active: false},
         {title: "Animation", id: 16, active: false}
-    ]
+    ],
+    total_pages: null
 }
 
 const genresReducer = (state=initialState, action) => {
@@ -35,7 +36,8 @@ const genresReducer = (state=initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                movieList: action.movieList
+                movieList: action.results,
+                total_pages: action.total_pages
             }
         case 'INCREASE_PAGE':
             return {

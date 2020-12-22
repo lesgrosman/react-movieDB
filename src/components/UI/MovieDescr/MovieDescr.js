@@ -4,7 +4,7 @@ import classes from './MovieDescr.module.css'
 
 const MovieDescr = props => {
 
-    const {poster, title, country, genres, tagline, director, writer, producer, cast} = props.movie
+    const {poster, title, country, year, genres, tagline, director, writer, producer, cast} = props.movie
 
     function castColumn(cast) {
         return cast.map(item => {
@@ -21,12 +21,13 @@ const MovieDescr = props => {
             <img src={poster} alt="imag"/>
             <div className={classes.Crew}>
                 <h2>{title}</h2>
-                <span><strong>Country</strong>: { country ? country.join(', '): null}</span>
-                <span><strong>Genre</strong>: { genres ? genres.join(', '): null}</span>
+                <span><strong>Country</strong>: { country ? country.join(', '): '-'}</span>
+                <span><strong>Year</strong>: { year ? year: '-'}</span>
+                <span><strong>Genre</strong>: { genres ? genres.join(', '): '-'}</span>
                 <span><strong>Slogan</strong>: { tagline ? tagline : '-'}</span>
-                <span><strong>Director</strong>: { director ? director.join(', '): null}</span>
-                <span><strong>Writer</strong>: { writer ? writer.join(', '): null}</span>
-                <span><strong>Producer</strong>: { producer ? producer.join(', '): null}</span>
+                <span><strong>Director</strong>: { director ? director.join(', '): '-'}</span>
+                <span><strong>Writer</strong>: { writer ? writer.join(', '): '-'}</span>
+                <span><strong>Producer</strong>: { producer ? producer.join(', '): '-'}</span>
             </div>
             <div className={classes.Cast}>
                 <h4>Cast:</h4>

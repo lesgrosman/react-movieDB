@@ -42,8 +42,8 @@ export function getPageByGenre(genre, page=1) {
         dispatch(setLoading())
 
         gotServices.getPageByGenre(genre, page)
-            .then(movieList => {
-                dispatch(updateMovieList(movieList))
+            .then(({results, total_pages}) => {
+                dispatch(updateMovieList(results, total_pages))
             })
             .catch(e => console.log(e))
     }
@@ -55,10 +55,11 @@ function setLoading() {
     }
 }
 
-function updateMovieList(movieList) {
+function updateMovieList(results, total_pages) {
     return {
         type: 'UPDATE_MOVIE_LIST',
-        movieList
+        results,
+        total_pages
     }
 }
 

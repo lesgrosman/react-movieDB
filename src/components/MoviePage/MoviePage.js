@@ -28,12 +28,12 @@ class MoviePage extends Component {
 
         return (           
             <>
-                <buttton 
+                <button 
                     className={classes.Button} 
                     onClick={() => this.props.history.goBack()}
                 >
                     Go Back
-                </buttton>
+                </button>
                 <div className={classes.MoviePage}>
                     {content}
                 </div>

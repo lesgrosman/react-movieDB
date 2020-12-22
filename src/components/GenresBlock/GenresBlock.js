@@ -17,7 +17,6 @@ class GenresBlock extends Component{
     componentDidUpdate(prevProps, prevState) {
         const {genre, page} = this.props
         if (prevProps.genre !== genre || prevProps.page !== page) {
-            console.log(page)
             this.props.getPageByGenre(genre, page)
         }
     }
@@ -73,7 +72,7 @@ const mapStateToProps = (state) => {
         page: state.genres.page,
         movieList: state.genres.movieList,
         loading: state.genres.loading,
-        genres: state.genres.genres
+        genres: state.genres.genres,
     }
 }
 

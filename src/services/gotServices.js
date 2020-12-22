@@ -32,12 +32,12 @@ export default class GotService {
 
     getPageByGenre = async (genre, page) => {
         const res = await this.getResource(`/discover/movie?api_key=${this._apiKey}&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}`)
-        return res.results
+        return this._transformList(res)
     }
 
     getMovieByName = async (name, page) => {
         const res = await this.getResource(`/search/movie?api_key=${this._apiKey}&language=en-US&query=${name}&page=${page}&include_adult=false`)
-        return res.results
+        return this._transformList(res)
     }
 
 
@@ -75,6 +75,13 @@ export default class GotService {
     
 
     //////////////////////////////////////////////////////////////////////
+
+    _transformList = (response) => {
+        return {
+            results: response.results,
+            total_pages: response.total_pages
+        }
+    }
 
 
     _transformMovie = (movie) => {

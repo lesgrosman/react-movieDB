@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import MovieList from '../MovieList/MovieList'
-import Loader from '../UI/Loader/Loader'
+import NoMovie from '../UI/NoMovie/NoMovie'
 import { connect } from 'react-redux'
 import {getMovieByName, increasePage, decreasePage, changeInput, changePrevInput} from '../../store/actions/search'
 import classes from './SearchBlock.module.css'
@@ -10,8 +10,6 @@ class SearchBlock extends Component{
     componentDidUpdate(prevProps, prevState) {
         const {page, prevInput} = this.props
         if (prevProps.page !== page) {
-            console.log(this.props.page)
-
             this.props.getMovieByName(prevInput, page)
         }
     }
@@ -19,9 +17,9 @@ class SearchBlock extends Component{
     onSubmitHandler = (event) => {
         event.preventDefault()
 
-        this.props.getMovieByName(this.props.input)
-
         this.props.changePrevInput(this.props.input)
+
+        this.props.getMovieByName(this.props.input)
     }
 
     onChangeHandler = (event) => {
@@ -29,12 +27,12 @@ class SearchBlock extends Component{
     }
 
     render() {
+        const {page, total_pages, movieList} = this.props
+        const disablePrev = page === 1 ? true : false  
+        const disableNext = page === total_pages ? true : false 
+        console.log(movieList)
 
-        const disablePrev = this.props.page === 1 ? true : false  
-        const disableNext = this.props.page === 500 ? true : false 
-
-        // const content = !this.state.loading ? <MovieList movieList={this.props.movieList}/> : <Loader/>
-        const content = <MovieList movieList={this.props.movieList}/>
+        const content = movieList.length > 0 ? <MovieList movieList={this.props.movieList}/> : <NoMovie/> 
 
         return (
             <div>
@@ -61,7 +59,8 @@ const mapStateToProps = state => {
         page: state.search.page,
         movieList: state.search.movieList,
         input: state.search.input,
-        prevInput: state.search.prevInput
+        prevInput: state.search.prevInput,
+        total_pages: state.search.total_pages
     }
 }
 
