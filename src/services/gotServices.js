@@ -1,3 +1,5 @@
+import noImage from './imageNotFound.jpeg'
+
 export default class GotService {
     constructor() {
         this._apiBase = "https://api.themoviedb.org/3"
@@ -67,7 +69,7 @@ export default class GotService {
 
     checkImage(image) {
         if (image === 'https://image.tmdb.org/t/p/w185/null') {
-            return 'https://lh3.googleusercontent.com/proxy/kyDyjgWVfRlY2WBlQqapSTuPHJ0n1ZhZvGYAM0xKuKBCU68MdHfAjye67u3zp9m_JJF9f4gDyJiIMJ8f3MMVhKR-X4RejX-Wmqtqh16TDUcsB_WC7Rmznz6R8qIKBFRn_jkmUrMoYS8STe7d4xpJzkU-ecC93bxKxqQ'
+            return noImage
         }
         return image
     }

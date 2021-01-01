@@ -7,19 +7,6 @@ const MovieFooter = props => {
 
     const {movie} = props
 
-    let color = ''
-
-    function setColor(rating) {
-        switch (rating) {
-            case rating < 5:
-                return 'red'
-            case rating >= 7:
-                return 'green'
-            default:
-                return 'grey'
-        }
-    }
-
     return (
         <div className={classes.MovieFooter}>  
             <div className={classes.Overview}>

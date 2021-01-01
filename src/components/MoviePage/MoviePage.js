@@ -19,7 +19,6 @@ class MoviePage extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.movieId !== this.props.movieId) {
-            console.log('DidUpdate')
             this.props.updateMovie(this.props.movieId)
         }
     }
