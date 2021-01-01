@@ -26,9 +26,10 @@ class GenresBlock extends Component{
     }
 
     renderGenres = (genres) => {
-        return genres.map(genre => {
+        return genres.map((genre, i) => {
             return (
                 <GenreName 
+                    key={Date.now() + i}
                     onClickHandler={(genreId) => this.onClickHandler(genreId)} 
                     genre={genre}
                 />

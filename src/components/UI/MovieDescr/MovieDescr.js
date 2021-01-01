@@ -4,15 +4,15 @@ import classes from './MovieDescr.module.css'
 
 const MovieDescr = props => {
 
-    const {poster, title, country, year, genres, tagline, director, writer, producer, cast} = props.movie
+    const {id, poster, title, country, year, genres, tagline, director, writer, producer, cast} = props.movie
 
     function castColumn(cast) {
-        return cast.map(item => {
+        return cast.map((item, i) => {
             return (
-                <>
+                <React.Fragment key ={id + i}>                  
                     {item}
                     <br/>
-                </>
+                </React.Fragment>
             )
         })
     }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import classes from './RandomMovie.module.css'
 import Loader from '../UI/Loader/Loader'
+import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getRandomPage} from '../../store/actions/random'
  
@@ -12,7 +13,7 @@ class RandomMovie extends Component {
     }
  
     render() {
-        const content = this.props.loading ? <Loader/> : <View movie={this.props.randomMovie}/>
+        const content = this.props.loading ? <Loader/> : <View onItemSelected={(id) => this.props.history.push(`/movie/${id}`)} movie={this.props.randomMovie}/>
 
         return (           
             <div className={classes.Layout}>
@@ -25,10 +26,11 @@ class RandomMovie extends Component {
     }
 }
 
-const View = ({movie}) => {
-    const {poster, title, tagline, genres, year, cast, director} = movie
+const View = (props) => {
+    const {id, poster, title, tagline, genres, year, cast, director} = props.movie
     return (
-        <div className={classes.View}>
+        <div className={classes.View}
+        onClick={() => props.onItemSelected(id)}>
             <img src={poster} alt="imag"/>
             <div className={classes.RandomMovieContent}>
                 <h3>{title}</h3>
@@ -55,4 +57,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RandomMovie)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RandomMovie))

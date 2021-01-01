@@ -1,14 +1,14 @@
 .Header {
     display: flex;
-    /* justify-content: center; */
-    /* font-family: sans-serif; */
-    /* text-align: center; */
-    /* height: 100px; */
     background: #3c4f65;
     border: 3px solid #ffa41b;
-    /* padding: 25px;  */
-    color: #fff;  
-    
+    color: #fff;    
+    /* justify-content: space-between;  */
+}
+
+.Git {
+    padding-top: 10px;
+    padding-left: 40%;
 }
 
 .Header img {

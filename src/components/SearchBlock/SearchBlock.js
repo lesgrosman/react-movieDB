@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import MovieList from '../MovieList/MovieList'
-import NoMovie from '../UI/NoMovie/NoMovie'
+import Loader from '../UI/Loader/Loader'
 import { connect } from 'react-redux'
 import {getMovieByName, increasePage, decreasePage, changeInput, changePrevInput} from '../../store/actions/search'
 import classes from './SearchBlock.module.css'
@@ -27,12 +27,11 @@ class SearchBlock extends Component{
     }
 
     render() {
-        const {page, total_pages, movieList} = this.props
+        const {page, total_pages, movieList, loading} = this.props
         const disablePrev = page === 1 ? true : false  
         const disableNext = page === total_pages ? true : false 
-        console.log(movieList)
 
-        const content = movieList.length > 0 ? <MovieList movieList={this.props.movieList}/> : <NoMovie/> 
+        const contentView = loading ? <Loader/> : <MovieList movieList={movieList}/>
 
         return (
             <div>
@@ -45,7 +44,7 @@ class SearchBlock extends Component{
                 <div className={classes.Content}>
                     <i disabled={disablePrev} onClick={this.props.decreasePage} className="far fa-arrow-alt-circle-left fa-6x"></i>
                     <div className={classes.List}>
-                        {content}
+                        {contentView}
                     </div>
                     <i disabled={disableNext} onClick={this.props.increasePage} className="far fa-arrow-alt-circle-right fa-6x"></i>
                 </div>
@@ -60,7 +59,8 @@ const mapStateToProps = state => {
         movieList: state.search.movieList,
         input: state.search.input,
         prevInput: state.search.prevInput,
-        total_pages: state.search.total_pages
+        total_pages: state.search.total_pages,
+        loading: state.search.loading
     }
 }
 

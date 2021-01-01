@@ -17,11 +17,12 @@ class MoviePage extends Component {
         this.props.updateMovie(this.props.movieId)
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevProps.movieId !== this.props.movieId) {
-    //         this.getMovie(this.props.movieId)
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        if (prevProps.movieId !== this.props.movieId) {
+            console.log('DidUpdate')
+            this.props.updateMovie(this.props.movieId)
+        }
+    }
 
     render() {
         const content = this.props.loading ? <Loader/> : <View/>

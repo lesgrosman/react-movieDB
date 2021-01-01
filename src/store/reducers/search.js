@@ -3,7 +3,8 @@ const initialState = {
     prevInput: '',
     page: 1,
     movieList: [],
-    total_pages: null
+    total_pages: null,
+    loading: false
 }
 
 export default function searchReducer(state=initialState, action) {
@@ -12,7 +13,13 @@ export default function searchReducer(state=initialState, action) {
             return {
                 ...state,
                 movieList: action.results,
-                total_pages: action.total_pages
+                total_pages: action.total_pages,
+                loading: false
+            }
+        case 'SET_LOADING_SEARCH':
+            return {
+                ...state,
+                loading: true
             }
         case 'INCREASE_PAGE_SEARCH':
             return {

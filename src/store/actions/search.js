@@ -5,6 +5,8 @@ const gotServices = new GotService()
 
 export function getMovieByName(name, page = 1) {
     return dispatch => {
+        dispatch(setLoading())
+        
         gotServices.getMovieByName(name, page)
             .then(({results, total_pages}) => {
                 dispatch(updateMovieList(results, total_pages))
@@ -12,6 +14,12 @@ export function getMovieByName(name, page = 1) {
             .catch(e => console.log(e))
     }
 
+}
+
+function setLoading() {
+    return {
+        type: 'SET_LOADING_SEARCH',
+    }
 }
 
 function updateMovieList(results, total_pages) {

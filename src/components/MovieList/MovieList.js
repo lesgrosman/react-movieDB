@@ -7,7 +7,7 @@ class MovieList extends Component{
 
     renderMovies = () => {
         return this.props.movieList.map(movie => {
-            const {id, title, vote_average, poster_path, release_date} = movie
+            const {id, title, vote_average, poster_path} = movie
             return <MovieItem 
                         key={id}
                         id={id}
@@ -16,14 +16,15 @@ class MovieList extends Component{
                         poster={poster_path}
                         onItemSelected={(id) => {
                             this.props.history.push(`/movie/${id}`)
-                            console.log(id)
                     }}
                     />
         })
     }
     
     render() {
-        const movies = this.renderMovies()
+        const movies = this.props.movieList.length > 0 
+        ? this.renderMovies() 
+        : <h1>The movie you are looking for, does not exist:(</h1>
         return(
             <div className={classes.MovieList}>
                 {movies}
