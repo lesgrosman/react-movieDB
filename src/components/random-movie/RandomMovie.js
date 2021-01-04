@@ -20,7 +20,7 @@ class RandomMovie extends Component {
                 <div className={classes.RandomMovie}>
                     {content}
                 </div>
-                <button onClick={this.props.getRandomPage}>Choose random movie!</button>
+                <button onClick={this.props.getRandomPage}>Get random movie!</button>
             </div>
         )
     }

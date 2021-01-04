@@ -6,7 +6,7 @@ import classes from './MovieFooter.module.css'
 const MovieFooter = props => {
 
     const {movie} = props
-    console.log(movie.id)
+
     return (
         <div className={classes.MovieFooter}>  
             <div className={classes.Overview}>
