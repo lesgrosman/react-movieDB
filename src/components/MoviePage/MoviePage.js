@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import GotService from '../../services/gotServices'
 import {withRouter} from 'react-router-dom'
 import Loader from '../UI/Loader/Loader'
-import MovieDescr from '../UI/MovieDescr/MovieDescr'
-import MovieFooter from '../UI/MovieFooter/MovieFooter'
+import MovieDescr from './MovieDescr/MovieDescr'
+import MovieFooter from './MovieFooter/MovieFooter'
+import TrailerArea from './TrailerArea/TrailerArea'
 import { connect } from 'react-redux'
 import { updateMovie } from '../../store/actions/random'
 import classes from './MoviePage.module.css' 
@@ -47,6 +48,7 @@ const View = () => {
         <div className={classes.View}>
             <MovieDescr/>
             <MovieFooter/>
+            <TrailerArea/>
         </div>
     )   
 }

@@ -1,6 +1,7 @@
 const initialState = {
     movie: {},
-    loading: true
+    loading: true,
+    trailers: []
 }
 
 export default function movieReducer(state=initialState, action) {
@@ -15,6 +16,11 @@ export default function movieReducer(state=initialState, action) {
                 ...state,
                 loading: false,
                 movie: action.movie
+            }
+        case 'SET_TRAILERS':
+            return {
+                ...state,
+                trailers: action.results
             }
         default:
             return state

@@ -31,10 +31,16 @@ export function updateMovie(id) {
         dispatch(setLoading())
 
         gotServices.getMovieById(id)
-        .then(movie => {
-            dispatch(setMovie(movie))
-        })
-        .catch(e => console.log(e))
+            .then(movie => {
+                dispatch(setMovie(movie))
+            })
+            .catch(e => console.log(e))
+
+        gotServices.getTrailerById(id)
+            .then(results => {
+                dispatch(setTrailers(results))
+            })
+            .catch(e => console.log(e))
     }
 
 } 
@@ -51,6 +57,15 @@ export function setLoading() {
         type: 'SET_LOADING'
     }
 }
+
+export function setTrailers(results) {
+    return {
+        type: 'SET_TRAILERS',
+        results
+    }
+}
+
+//////////////////////////
 
 export function setRandomMovie(movie) {
     return {

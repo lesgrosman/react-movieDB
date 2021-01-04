@@ -17,11 +17,11 @@ export default class GotService {
         return await res.json()
     }
 
-    getRandomPage = async () => {
+    getRandomPage =  async () => {
         const randomPage = Math.floor(Math.random() * (500 - 1)) + 1
         const randomMovie = Math.floor(Math.random() * (19 - 1)) + 1
 
-        const res = await this.getResource(`/movie/popular?api_key=1f28dfddc7456645d53d767c58b4324c&language=en-US&page=${randomPage}`)
+        const res =  await this.getResource(`/movie/popular?api_key=1f28dfddc7456645d53d767c58b4324c&language=en-US&page=${randomPage}`)
         return res.results[randomMovie].id
         
     }
@@ -40,6 +40,11 @@ export default class GotService {
     getMovieByName = async (name, page) => {
         const res = await this.getResource(`/search/movie?api_key=${this._apiKey}&language=en-US&query=${name}&page=${page}&include_adult=false`)
         return this._transformList(res)
+    }
+
+    getTrailerById = async (id) => {
+        const res = await this.getResource(`/movie/${id}/videos?api_key=${this._apiKey}&language=en-US`)
+        return res.results
     }
 
 
